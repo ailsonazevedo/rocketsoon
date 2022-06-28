@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:rocketsoon/ui/rocketTheme.dart';
-import 'package:rocketsoon/ui/view/home.dart';
+import 'package:rocketsoon/src/ui/rocketTheme.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -10,15 +9,21 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
- class _SplashScreenState extends State<SplashScreen> {
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushNamed('/home');
-    });
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          '/home',
+          (Route<dynamic> route) => false,
+        );
+      },
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +40,7 @@ class SplashScreen extends StatefulWidget {
                 color: Color(0xFF03A9F4),
                 size: 50,
               ),
-                          SizedBox(
+              SizedBox(
                 height: 50,
               ),
               Padding(
@@ -46,14 +51,10 @@ class SplashScreen extends StatefulWidget {
                   height: 450,
                 ),
               ),
-
-              ],
-              )
-              ),
+            ],
+          ),
+        ),
       ),
-  );
+    );
   }
-
-
 }
-
