@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-LinearGradient RocketTheme() {
+LinearGradient RocketGradient() {
     return LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,

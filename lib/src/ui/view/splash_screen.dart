@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:rocketsoon/src/ui/rocketTheme.dart';
+import 'package:rocketsoon/src/ui/rocketGradient.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: RocketTheme(),
+          gradient: RocketGradient(),
         ),
         child: SizedBox(
           width: double.infinity,
