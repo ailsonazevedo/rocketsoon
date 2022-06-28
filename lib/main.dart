@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rocketsoon/src/application/controllers/global_bidings.dart';
+import 'package:rocketsoon/src/application/controllers/home_controller.dart';
 import 'package:rocketsoon/src/ui/view/home.dart';
 import 'package:rocketsoon/src/ui/view/splash_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  Get.putAsync<SharedPreferences>(() async {
+    return await SharedPreferences.getInstance();
+  });
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Rocketsoon',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+  runApp(
+    GetMaterialApp(
       initialRoute: '/',
-      routes: {
-        '/': (ctx) => SplashScreen(),
-        '/home': (ctx) => HomePage(),
-      },
-    );
-  }
+      initialBinding: GlobalBiding(),
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => SplashScreen(),
+        ),
+        GetPage(
+          name: '/home',
+          page: () => const HomePage(),
+          bindings: [
+            BindingsBuilder.put(() => HomeController()),
+          ],
+        ),
+      ],
+    ),
+  );
 }
