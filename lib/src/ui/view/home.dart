@@ -26,8 +26,6 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.connectionState == ConnectionState.done) {
             List<RocketModel> rockets = snapshot.data;
 
-            print(rockets);
-
             return ListView.builder(
               shrinkWrap: true,
               itemCount: rockets.length,
