@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:rocketsoon/src/ui/rocketGradient.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -29,30 +30,26 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: RocketGradient(),
-        ),
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
-              SpinKitFadingCircle(
-                color: Color(0xFF03A9F4),
-                size: 50,
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: EdgeInsets.all(2.0),
-                child: Image(
-                  image: AssetImage("assets/img/rocket.png"),
-                  width: 450,
-                  height: 450,
-                ),
-              ),
-            ],
+          image: DecorationImage(
+            image: AssetImage('assets/img/background.png'),
+            fit: BoxFit.cover,
           ),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Lottie.network(
+                    'https://assets3.lottiefiles.com/packages/lf20_ii6qdbgz.json',
+                    width: 500,
+                    height: 500,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
