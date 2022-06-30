@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('img/background.png'),
+            image: AssetImage('assets/img/background.png'),
             fit: BoxFit.cover,
           ),
         ),

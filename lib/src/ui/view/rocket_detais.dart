@@ -54,7 +54,7 @@ class RocketDetails extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.only(top: 5.0),
-              child: Text("Descrição: ${rocket.description}"),
+              child: Text("Descrição: ${rocket.description}",),
             ),
           ],
         ),

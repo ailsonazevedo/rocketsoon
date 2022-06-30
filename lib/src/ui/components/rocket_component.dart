@@ -49,8 +49,18 @@ class RocketComponent extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("${rocket.rocketName}"),
-                        Text(rocket.company)
+                        Text("${rocket.rocketName}",
+                            style: Theme.of(context).textTheme.headline6),
+                        Row(
+                          children: [
+                            Icon(Icons.home_work_outlined,
+                              color: Colors.grey,),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal:6.0),
+                              child: Text(rocket.company),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
