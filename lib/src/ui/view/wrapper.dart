@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rocketsoon/src/ui/view/favorites.dart';
 import 'package:rocketsoon/src/ui/view/home.dart';
 
 class AppWrapper extends StatefulWidget {
@@ -48,9 +49,7 @@ class _AppWrapperState extends State<AppWrapper> {
         controller: _pageController,
         children: [
           HomePage(),
-          Container(
-            child: Text('second screen'),
-          ),
+          FavoritesPage(),
         ],
       ),
     );

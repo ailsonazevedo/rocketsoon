@@ -16,7 +16,7 @@ class RocketController extends GetxController {
     db = instance;
   }
 
-  toggle() async {
+  toggleFavorite() async {
     favorited.value = !favorited.value;
     db?.put(id.value, favorited.value);
   }

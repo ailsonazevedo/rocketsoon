@@ -4,6 +4,7 @@ class RocketModel {
   RocketModel({
     required this.id,
     required this.active,
+    required this.favorite,
     required this.stages,
     required this.boosters,
     required this.costPerLaunch,
@@ -11,9 +12,6 @@ class RocketModel {
     required this.firstFlight,
     required this.country,
     required this.company,
-    required this.height,
-    required this.diameter,
-    required this.mass,
     required this.flickrImages,
     required this.wikipedia,
     required this.description,
@@ -23,6 +21,7 @@ class RocketModel {
 
   final int id;
   final bool active;
+  final bool favorite;
   final int stages;
   final int boosters;
   final int costPerLaunch;
@@ -30,9 +29,6 @@ class RocketModel {
   final DateTime firstFlight;
   final String country;
   final String company;
-  final Diameter height;
-  final Diameter diameter;
-  final Mass mass;
   final List<String> flickrImages;
   final String wikipedia;
   final String description;
@@ -54,14 +50,12 @@ class RocketModel {
         firstFlight: DateTime.parse(json["first_flight"]),
         country: json["country"],
         company: json["company"],
-        height: Diameter.fromMap(json["height"]),
-        diameter: Diameter.fromMap(json["diameter"]),
-        mass: Mass.fromMap(json["mass"]),
         flickrImages: List<String>.from(json["flickr_images"].map((x) => x)),
         wikipedia: json["wikipedia"],
         description: json["description"],
         rocketName: json["rocket_name"],
         rocketType: json["rocket_type"],
+        favorite: false,
       );
 
   Map<String, dynamic> toMap() => {
@@ -75,61 +69,11 @@ class RocketModel {
             "${firstFlight.year.toString().padLeft(4, '0')}-${firstFlight.month.toString().padLeft(2, '0')}-${firstFlight.day.toString().padLeft(2, '0')}",
         "country": country,
         "company": company,
-        "height": height.toMap(),
-        "diameter": diameter.toMap(),
-        "mass": mass.toMap(),
         "flickr_images": List<dynamic>.from(flickrImages.map((x) => x)),
         "wikipedia": wikipedia,
         "description": description,
         "rocket_name": rocketName,
         "rocket_type": rocketType,
-      };
-}
-
-class Diameter {
-  Diameter({
-    required this.meters,
-    required this.feet,
-  });
-
-  final double meters;
-  final double feet;
-
-  factory Diameter.fromJson(String str) => Diameter.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Diameter.fromMap(Map<String, dynamic> json) => Diameter(
-        meters: json["meters"].toDouble(),
-        feet: json["feet"].toDouble(),
-      );
-
-  Map<String, dynamic> toMap() => {
-        "meters": meters,
-        "feet": feet,
-      };
-}
-
-class Mass {
-  Mass({
-    required this.kg,
-    required this.lb,
-  });
-
-  final int kg;
-  final int lb;
-
-  factory Mass.fromJson(String str) => Mass.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Mass.fromMap(Map<String, dynamic> json) => Mass(
-        kg: json["kg"],
-        lb: json["lb"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "kg": kg,
-        "lb": lb,
+        "favorite": favorite,
       };
 }

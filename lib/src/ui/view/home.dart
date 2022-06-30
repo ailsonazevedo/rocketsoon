@@ -4,18 +4,13 @@ import 'package:rocketsoon/src/application/controllers/home_controller.dart';
 import 'package:rocketsoon/src/domain/rocket.dart';
 import 'package:rocketsoon/src/ui/components/rocket_component.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final HomeController controller = Get.put(HomeController());
-
-  @override
   Widget build(BuildContext context) {
+    final HomeController controller = Get.put(HomeController());
+
     return FutureBuilder(
       initialData: [],
       future: controller.getAllRockets(),
