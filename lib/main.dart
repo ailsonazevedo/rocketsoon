@@ -5,18 +5,14 @@ import 'package:rocketsoon/src/application/controllers/global_bidings.dart';
 import 'package:rocketsoon/src/ui/view/home.dart';
 import 'package:rocketsoon/src/ui/view/splash_screen.dart';
 import 'package:rocketsoon/src/ui/view/wrapper.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox('db');
 
-  Get.putAsync<SharedPreferences>(() async {
-    return await SharedPreferences.getInstance();
-  });
-
   runApp(
     GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/splash_screen',
       initialBinding: GlobalBiding(),
       getPages: [

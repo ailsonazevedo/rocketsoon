@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:rocketsoon/src/application/controllers/home_controller.dart';
 import 'package:rocketsoon/src/domain/rocket.dart';
@@ -28,21 +29,32 @@ class HomePage extends StatelessWidget {
             );
           }
 
-          return ListView.builder(
-            shrinkWrap: true,
+          return GridView.builder(
             itemCount: rockets.length,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 300,
+              mainAxisExtent: 250,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
             itemBuilder: (_, index) {
               return Container(
-                padding: const EdgeInsets.all(12.0),
-                margin: const EdgeInsets.symmetric(
-                  vertical: 5.0,
-                ),
                 child: RocketComponent(
                   rocket: rockets[index],
                 ),
               );
             },
           );
+
+          // return GridView.count(
+          //   // crossAxisCount is the number of columns
+          //   crossAxisCount: 2,
+          //   // This creates two columns with two items in each column
+          //   children: ListView.builder(
+          //     shrinkWrap: true,
+          //     itemCount: rockets.length,
+          //     itemBuilder: ,
+          // );
         }
 
         return SizedBox.expand(

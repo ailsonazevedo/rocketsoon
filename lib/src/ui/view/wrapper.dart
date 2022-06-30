@@ -17,6 +17,7 @@ class _AppWrapperState extends State<AppWrapper> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Rockets'),
+        backgroundColor: Colors.black,
       ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
