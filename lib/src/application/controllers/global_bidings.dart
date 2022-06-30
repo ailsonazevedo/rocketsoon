@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:rocketsoon/src/application/controllers/wrapper_controller.dart';
 
 class GlobalBiding implements Bindings {
   @override
-  void dependencies() {}
+  void dependencies() {
+    Get.put<WrapperController>(WrapperController());
+  }
 }

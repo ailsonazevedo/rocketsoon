@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
+import 'package:rocketsoon/src/application/services/spacex_api_service.dart';
+import 'package:rocketsoon/src/domain/rocket.dart';
 
 class HomeController extends GetxController {
-  var count = 0.obs;
-  increment() => count.value++;
+  Future<List<RocketModel>> getAllRockets() async {
+    return await SpaceXAPI().getAll();
+  }
 }

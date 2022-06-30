@@ -58,12 +58,17 @@ class RocketComponent extends StatelessWidget {
                 margin: const EdgeInsets.only(right: 12.0),
                 child: IconButton(
                   onPressed: controller.toggle,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  color: Colors.transparent,
                   icon: Obx(
                     () => Icon(
                       Icons.favorite,
                       color:
                           controller.favorited.value ? Colors.red : Colors.grey,
-                      size: 32.0,
+                      size: 28.0,
                     ),
                   ),
                 ),
